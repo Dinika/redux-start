@@ -5,3 +5,5 @@
 how-to-use.txt
 
 package-lock.json
+yarn-debug.log*
+yarn-error.log*
