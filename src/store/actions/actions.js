@@ -31,10 +31,18 @@ export function subtract(payload) {
   }
 }
 
-export function storeCounter(payload) {
+function saveCounter(payload) {
   return {
     type: STORE_COUNTER,
     payload: {...payload},
+  }
+}
+
+export function storeCounter(payload) {
+  return (dispatch) => {
+    setTimeout( () => {
+      dispatch(saveCounter(payload))
+    }, 2000)
   }
 }
 
