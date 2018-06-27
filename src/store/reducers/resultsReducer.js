@@ -1,4 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
+import { updateObject } from '../utility';
 
 const initialState = {
   results: []
@@ -7,18 +8,12 @@ const initialState = {
 const resultsReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.STORE_COUNTER:
-      return {
-        ...state,
-        results: state.results.concat({id: new Date(), value: action.payload.currentCounterValue}),
-      }
+      return updateObject(state, {results: state.results.concat({id: new Date(), value: action.payload.currentCounterValue})})
     case actionTypes.REMOVE_COUNTER:
       const updatedResults = state.results.filter( (result) => {
         return result.id !== action.payload.idToRemove
       });
-      return {
-        ...state,
-        results: updatedResults,
-      }
+      return updateObject(state, {results: updatedResults})
     default:
       return state;
   }
